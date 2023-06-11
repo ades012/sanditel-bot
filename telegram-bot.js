@@ -66,7 +66,7 @@ function runTelegramBot() {
 
       if (rows.length > 0) {
         const result = rows[0]; // Assuming you want to retrieve only the first matching row
-        const response = `Berikut detail untuk Switch "${result.name}":\nNama : ${result.detail}\nId : ${result.id}\nPassword : ${result.password}`;
+        const response = `Berikut detail untuk Switch "${result.name}":\nNama : ${result.detail}\nIP Address : ${result.ip}\nId : ${result.id}\nPassword : ${result.password}`;
         bot.sendMessage(chatId, response);
       } else {
         const response = `Maaf, data untuk Switch "${requestedNAME}" tidak ditemukan. Silahkan kirim pesan "list Switch" tanpa tanda petik untuk melihat list nama switch yang terdaftar.`;
