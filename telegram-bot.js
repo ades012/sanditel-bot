@@ -51,6 +51,30 @@ function runTelegramBot() {
     });
   });
 
+  bot.onText(/^switch (.+)/i, (msg, match) => {
+    const chatId = msg.chat.id;
+    const requestedNAME = match[1].trim().toLowerCase();
+
+    const query = `SELECT name, detail, ip, id, password FROM switch WHERE name LIKE '%${requestedNAME}%'`;
+
+    connection.query(query, (err, rows) => {
+      if (err) {
+        console.error('Error executing query:', err);
+        bot.sendMessage(chatId, 'Oops! An error occurred while fetching data.');
+        return;
+      }
+
+      if (rows.length > 0) {
+        const result = rows[0]; // Assuming you want to retrieve only the first matching row
+        const response = `Berikut detail untuk Switch "${result.name}":\nNama : ${result.detail}\nId : ${result.id}\nPassword : ${result.password}`;
+        bot.sendMessage(chatId, response);
+      } else {
+        const response = `Maaf, data untuk SSID "${requestedSSID}" tidak ditemukan.`;
+        bot.sendMessage(chatId, response);
+      }
+    });
+  });
+
   bot.onText(/dude/i, (msg) => {
     const chatId = msg.chat.id;
     bot.sendMessage(chatId, 'Yes my King');
