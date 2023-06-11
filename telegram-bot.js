@@ -69,11 +69,37 @@ function runTelegramBot() {
         const response = `Berikut detail untuk Switch "${result.name}":\nNama : ${result.detail}\nId : ${result.id}\nPassword : ${result.password}`;
         bot.sendMessage(chatId, response);
       } else {
-        const response = `Maaf, data untuk SSID "${requestedSSID}" tidak ditemukan.`;
+        const response = `Maaf, data untuk Switch "${requestedNAME}" tidak ditemukan. Silahkan kirim pesan "list Switch" tanpa tanda petik untuk melihat list nama switch yang terdaftar.`;
         bot.sendMessage(chatId, response);
       }
     });
   });
+
+  bot.onText(/list switch/i, (msg) => {
+    const chatId = msg.chat.id;
+  
+    const query = 'SELECT name, detail, ip, id, password FROM switch';
+  
+    connection.query(query, (err, rows) => {
+      if (err) {
+        console.error('Error executing query:', err);
+        bot.sendMessage(chatId, 'Oops! Terjadi kesalahan saat mengambil data.');
+        return;
+      }
+  
+      if (rows.length > 0) {
+        let response = 'Berikut daftar switch yang terdaftar:\n\n';
+  
+        rows.forEach((row) => {
+          response += `${row.name}\n`;
+        });
+  
+        bot.sendMessage(chatId, response);
+      } else {
+        bot.sendMessage(chatId, 'Maaf, tidak ada data switch yang terdaftar.');
+      }
+    });
+  });  
 
   bot.onText(/dude/i, (msg) => {
     const chatId = msg.chat.id;
