@@ -1,5 +1,4 @@
 const TelegramBot = require('node-telegram-bot-api');
-// const ExcelJS = require('exceljs');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
 const path = require('path');
