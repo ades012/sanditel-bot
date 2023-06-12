@@ -226,7 +226,8 @@ password <SSID> - Menampilkan SSID dan Password \n \n \
 switch <nama switch> - Menampilkan Detail Switch \n \n \
 list ssid - Menampilkan semua SSID yang terdaftar \n \n \
 list switch - Menampilkan semua Switch yang terdaftar \n \n \
-tambah ssid <nama SSID> password <password> - Menambahkan ssid dan password baru ke database');
+tambah ssid <nama SSID> password <password> - Menambahkan ssid dan password baru ke database \n \n \
+hapus ssid <nama SSID> - Menghapus ssid pada database');
   });
 }
 
