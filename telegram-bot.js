@@ -209,72 +209,6 @@ function runTelegramBot() {
     });
   });  
 
-  // bot.onText(/^ubah switch (.+) port (\d+) menjadi vlan access (\d+)/i, async (msg, match) => {
-  //   const chatId = msg.chat.id;
-  //   const requestedNAME = match[1].trim().toLowerCase();
-  //   const requestedPort = match[2];
-  //   const requestedVlan = match[3];
-  
-  //   const switchQuery = `SELECT name, detail, ip, id, password FROM switch WHERE name LIKE '%${requestedNAME}%'`;
-  //   connection.query(switchQuery, async (err, switchRows) => {
-  //     if (err) {
-  //       console.error('Error executing switch query:', err);
-  //       bot.sendMessage(chatId, 'Oops! An error occurred while fetching switch data.');
-  //       return;
-  //     }
-  
-  //     if (switchRows.length > 0) {
-  //       const switchData = switchRows[0];
-  //       const { ip, id, password } = switchData;
-        
-  //       const connectionParams = {
-  //         host: ip,
-  //         port: 23,
-  //         username: id,
-  //         password: password,
-  //         shellPrompt: '#',
-  //         timeout: 5000,
-  //       };
-  
-  //       const telnetConnection = new Telnet();
-  
-  //       try {
-  //         await telnetConnection.connect(connectionParams);
-  //         await sendSwitchCommands(telnetConnection, requestedPort, requestedVlan);
-  //         await telnetConnection.end();
-  
-  //         const response = `Perubahan pada Switch "${switchData.name}" telah berhasil dilakukan.`;
-  //         bot.sendMessage(chatId, response);
-  //       } catch (error) {
-  //         console.error('Error during telnet connection:', error);
-  //         bot.sendMessage(chatId, 'Oops! An error occurred while connecting to the switch.');
-  //       }
-  //     } else {
-  //       const response = `Maaf, data untuk Switch "${requestedNAME}" tidak ditemukan. Silahkan kirim pesan "list Switch" tanpa tanda petik untuk melihat list nama switch yang terdaftar.`;
-  //       bot.sendMessage(chatId, response);
-  //     }
-  //   });
-  // });
-  
-  // async function sendSwitchCommands(telnetConnection, port, vlan) {
-  //   try {
-  //     await telnetConnection.exec('config');
-  //     await telnetConnection.exec(`int eth 1/${port}`);
-  //     await telnetConnection.exec('no switchport mode');
-  //     await telnetConnection.exec('no switchport allowed vlan');
-  //     await telnetConnection.exec('switchport mode access');
-  //     await telnetConnection.exec(`switchport allowed vlan ${vlan} untagged`);
-  //     await telnetConnection.exec(`switchport native vlan ${vlan}`);
-  //     await telnetConnection.exec('exit');
-  //     await telnetConnection.exec('exit');
-  //   } catch (error) {
-  //     console.error('Error during Telnet commands:', error);
-  //     throw new Error('An error occurred while sending commands to the switch.');
-  //   }
-  // }
-  
- 
-
   bot.onText(/dude/i, (msg) => {
     const chatId = msg.chat.id;
     bot.sendMessage(chatId, 'Yes my King');
@@ -283,6 +217,16 @@ function runTelegramBot() {
   bot.onText(/nuhun/i, (msg) => {
     const chatId = msg.chat.id;
     bot.sendMessage(chatId, 'Sawangsulna Pa/Bu');
+  });
+
+  bot.onText(/help/i, (msg) => {
+    const chatId = msg.chat.id;
+    bot.sendMessage(chatId, 'Berikut perintah untuk Bot Sanditel : \n \n \
+password <SSID> - Menampilkan SSID dan Password \n \n \
+switch <nama switch> - Menampilkan Detail Switch \n \n \
+list ssid - Menampilkan semua SSID yang terdaftar \n \n \
+list switch - Menampilkan semua Switch yang terdaftar \n \n \
+tambah ssid <nama SSID> password <password> - Menambahkan ssid dan password baru ke database');
   });
 }
 
