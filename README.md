@@ -20,9 +20,9 @@ Untuk menjalankannya anda membutuhkan :
 5. Buat Sebuah database menggunakan mariaDB \
     `https://mariadb.com/kb/en/getting-installing-and-upgrading-mariadb/ ` \
    Buatlah sebuah database dengan tabel wifi dan switch \
-   Isi tabel wifi : \
-     - ssid, password
-   Isi tabel Switch : \
+   - Isi tabel wifi : 
+     - ssid, password 
+   - Isi tabel Switch : 
      - name, detail, ip, id, password
 7. buat sebuah file .env dan isi file dengan env yang dibutuhkan \
    `DB_HOST=<host database>` \
