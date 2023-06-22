@@ -32,7 +32,7 @@ Untuk menjalankannya anda membutuhkan :
    `DB_NAME=<nama database>` \
    `TELEGRAM_TOKEN=<'token telegram'>` \
    `TELEGRAM_GROUP=<'id grup telegram'>`
-8. Untuk Operasi CRUD untuk WiFi dan Switch silahkan operasikan sesuka hati, anda bisa melakukan konfigurasi ulang pada database maupun pada kode javascriptnya.
+8. Untuk Operasi CRUD untuk WiFi dan Switch silahkan operasikan sesuka hati, anda bisa menyesuaikan konfigurasi pada database maupun pada kode javascriptnya sesuai yang anda butuhkan.
 
 9. jalankan `node telegram-bot.js`
 10. Silahkan lakukan pengujian dengan melakukan konversasi dengan BOT
