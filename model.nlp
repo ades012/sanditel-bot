@@ -1,0 +1,1676 @@
+{
+  "settings": {
+    "languages": [
+      "id"
+    ],
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "id"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "id": {
+        "settings": {
+          "locale": "id",
+          "trainByDomain": false,
+          "tag": "domain-manager-id",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "internet,mati": {
+            "intent": "internet_issue",
+            "domain": "default"
+          },
+          "error,internet": {
+            "intent": "internet_issue",
+            "domain": "default"
+          },
+          "internet,lemot": {
+            "intent": "internet_issue",
+            "domain": "default"
+          },
+          "dc,internet": {
+            "intent": "internet_issue",
+            "domain": "default"
+          },
+          "gak,internet,jalan": {
+            "intent": "internet_issue",
+            "domain": "default"
+          },
+          "^baik$": {
+            "intent": "internet_issue_success",
+            "domain": "default"
+          },
+          "^baik,ima,kasih$": {
+            "intent": "internet_issue_success",
+            "domain": "default"
+          },
+          "^ok,ima,kasih$": {
+            "intent": "internet_issue_success",
+            "domain": "default"
+          },
+          "mati,printer": {
+            "intent": "printer_issue",
+            "domain": "default"
+          },
+          "error,printer": {
+            "intent": "printer_issue",
+            "domain": "default"
+          },
+          "lemot,printer": {
+            "intent": "printer_issue",
+            "domain": "default"
+          },
+          "dc,printer": {
+            "intent": "printer_issue",
+            "domain": "default"
+          },
+          "gak,jalan,printer": {
+            "intent": "printer_issue",
+            "domain": "default"
+          },
+          "ima,kasih": {
+            "intent": "thanks_intent",
+            "domain": "default"
+          },
+          "nuhun": {
+            "intent": "thanks_intent",
+            "domain": "default"
+          },
+          "hatur,nuhun": {
+            "intent": "thanks_intent",
+            "domain": "default"
+          },
+          "halo": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "hai": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "helo": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "hello": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "assalamualaikum": {
+            "intent": "greeting_islam",
+            "domain": "default"
+          },
+          "alaikum,assala": {
+            "intent": "greeting_islam",
+            "domain": "default"
+          },
+          "dude": {
+            "intent": "memanggil",
+            "domain": "default"
+          },
+          "brader": {
+            "intent": "memanggil",
+            "domain": "default"
+          },
+          "bray": {
+            "intent": "memanggil",
+            "domain": "default"
+          },
+          "bro": {
+            "intent": "memanggil",
+            "domain": "default"
+          },
+          "cuy": {
+            "intent": "memanggil",
+            "domain": "default"
+          },
+          "password": {
+            "intent": "get_password",
+            "domain": "default"
+          },
+          "for,password,{ssid}": {
+            "intent": "get_password",
+            "domain": "default"
+          },
+          "kata,sandi": {
+            "intent": "get_password",
+            "domain": "default"
+          },
+          "password,ssid,tambah": {
+            "intent": "add_ssid",
+            "domain": "default"
+          },
+          "hapus,ssid": {
+            "intent": "delete_ssid",
+            "domain": "default"
+          },
+          "ssid,ubah": {
+            "intent": "ubah_ssid",
+            "domain": "default"
+          },
+          "rubah,ssid": {
+            "intent": "ubah_ssid",
+            "domain": "default"
+          },
+          "list,ssid": {
+            "intent": "list_ssid",
+            "domain": "default"
+          },
+          "daftar,ssid": {
+            "intent": "list_ssid",
+            "domain": "default"
+          },
+          "list,switch": {
+            "intent": "list_switch",
+            "domain": "default"
+          },
+          "daftar,switch": {
+            "intent": "list_switch",
+            "domain": "default"
+          },
+          "switch": {
+            "intent": "get_switch",
+            "domain": "default"
+          },
+          "help": {
+            "intent": "help",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "internet_issue": "default",
+          "internet_issue_success": "default",
+          "printer_issue": "default",
+          "thanks_intent": "default",
+          "greeting": "default",
+          "greeting_islam": "default",
+          "memanggil": "default",
+          "get_password": "default",
+          "add_ssid": "default",
+          "delete_ssid": "default",
+          "ubah_ssid": "default",
+          "list_ssid": "default",
+          "list_switch": "default",
+          "get_switch": "default",
+          "help": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "internet mati",
+            "intent": "internet_issue"
+          },
+          {
+            "domain": "default",
+            "utterance": "internet error",
+            "intent": "internet_issue"
+          },
+          {
+            "domain": "default",
+            "utterance": "internet lemot",
+            "intent": "internet_issue"
+          },
+          {
+            "domain": "default",
+            "utterance": "internet dc",
+            "intent": "internet_issue"
+          },
+          {
+            "domain": "default",
+            "utterance": "internet gak jalan",
+            "intent": "internet_issue"
+          },
+          {
+            "domain": "default",
+            "utterance": "^baik$",
+            "intent": "internet_issue_success"
+          },
+          {
+            "domain": "default",
+            "utterance": "^baik, terima kasih$",
+            "intent": "internet_issue_success"
+          },
+          {
+            "domain": "default",
+            "utterance": "^ok, terima kasih$",
+            "intent": "internet_issue_success"
+          },
+          {
+            "domain": "default",
+            "utterance": "printer mati",
+            "intent": "printer_issue"
+          },
+          {
+            "domain": "default",
+            "utterance": "printer error",
+            "intent": "printer_issue"
+          },
+          {
+            "domain": "default",
+            "utterance": "printer lemot",
+            "intent": "printer_issue"
+          },
+          {
+            "domain": "default",
+            "utterance": "printer dc",
+            "intent": "printer_issue"
+          },
+          {
+            "domain": "default",
+            "utterance": "printer gak jalan",
+            "intent": "printer_issue"
+          },
+          {
+            "domain": "default",
+            "utterance": "terima kasih",
+            "intent": "thanks_intent"
+          },
+          {
+            "domain": "default",
+            "utterance": "nuhun",
+            "intent": "thanks_intent"
+          },
+          {
+            "domain": "default",
+            "utterance": "hatur nuhun",
+            "intent": "thanks_intent"
+          },
+          {
+            "domain": "default",
+            "utterance": "Halo",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "Hai",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "Helo",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "Hello",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "Assalamualaikum",
+            "intent": "greeting_islam"
+          },
+          {
+            "domain": "default",
+            "utterance": "Assalamu'alaikum",
+            "intent": "greeting_islam"
+          },
+          {
+            "domain": "default",
+            "utterance": "Dude",
+            "intent": "memanggil"
+          },
+          {
+            "domain": "default",
+            "utterance": "Brader",
+            "intent": "memanggil"
+          },
+          {
+            "domain": "default",
+            "utterance": "Bray",
+            "intent": "memanggil"
+          },
+          {
+            "domain": "default",
+            "utterance": "Bro",
+            "intent": "memanggil"
+          },
+          {
+            "domain": "default",
+            "utterance": "Cuy",
+            "intent": "memanggil"
+          },
+          {
+            "domain": "default",
+            "utterance": "password",
+            "intent": "get_password"
+          },
+          {
+            "domain": "default",
+            "utterance": "password for {SSID}",
+            "intent": "get_password"
+          },
+          {
+            "domain": "default",
+            "utterance": "kata sandi",
+            "intent": "get_password"
+          },
+          {
+            "domain": "default",
+            "utterance": "tambah ssid password",
+            "intent": "add_ssid"
+          },
+          {
+            "domain": "default",
+            "utterance": "hapus ssid",
+            "intent": "delete_ssid"
+          },
+          {
+            "domain": "default",
+            "utterance": "ubah ssid",
+            "intent": "ubah_ssid"
+          },
+          {
+            "domain": "default",
+            "utterance": "rubah ssid",
+            "intent": "ubah_ssid"
+          },
+          {
+            "domain": "default",
+            "utterance": "list ssid",
+            "intent": "list_ssid"
+          },
+          {
+            "domain": "default",
+            "utterance": "daftar ssid",
+            "intent": "list_ssid"
+          },
+          {
+            "domain": "default",
+            "utterance": "list switch",
+            "intent": "list_switch"
+          },
+          {
+            "domain": "default",
+            "utterance": "daftar switch",
+            "intent": "list_switch"
+          },
+          {
+            "domain": "default",
+            "utterance": "switch ",
+            "intent": "get_switch"
+          },
+          {
+            "domain": "default",
+            "utterance": "help",
+            "intent": "help"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "id",
+              "tag": "nlu-id",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "internet": 1,
+              "mati": 1,
+              "error": 1,
+              "lemot": 1,
+              "dc": 1,
+              "gak": 1,
+              "jalan": 1,
+              "^baik$": 1,
+              "^baik": 1,
+              "ima": 1,
+              "kasih$": 1,
+              "^ok": 1,
+              "printer": 1,
+              "kasih": 1,
+              "nuhun": 1,
+              "hatur": 1,
+              "halo": 1,
+              "hai": 1,
+              "helo": 1,
+              "hello": 1,
+              "assalamualaikum": 1,
+              "assala": 1,
+              "alaikum": 1,
+              "dude": 1,
+              "brader": 1,
+              "bray": 1,
+              "bro": 1,
+              "cuy": 1,
+              "password": 1,
+              "for": 1,
+              "{ssid}": 1,
+              "kata": 1,
+              "sandi": 1,
+              "tambah": 1,
+              "ssid": 1,
+              "hapus": 1,
+              "ubah": 1,
+              "rubah": 1,
+              "list": 1,
+              "daftar": 1,
+              "switch": 1,
+              "help": 1
+            },
+            "intents": {
+              "internet_issue": 1,
+              "internet_issue_success": 1,
+              "printer_issue": 1,
+              "thanks_intent": 1,
+              "greeting": 1,
+              "greeting_islam": 1,
+              "memanggil": 1,
+              "get_password": 1,
+              "add_ssid": 1,
+              "delete_ssid": 1,
+              "ubah_ssid": 1,
+              "list_ssid": 1,
+              "list_switch": 1,
+              "get_switch": 1,
+              "help": 1
+            },
+            "intentFeatures": {
+              "internet_issue": {
+                "internet": 1,
+                "mati": 1,
+                "error": 1,
+                "lemot": 1,
+                "dc": 1,
+                "gak": 1,
+                "jalan": 1
+              },
+              "internet_issue_success": {
+                "^baik$": 1,
+                "^baik": 1,
+                "ima": 1,
+                "kasih$": 1,
+                "^ok": 1
+              },
+              "printer_issue": {
+                "printer": 1,
+                "mati": 1,
+                "error": 1,
+                "lemot": 1,
+                "dc": 1,
+                "gak": 1,
+                "jalan": 1
+              },
+              "thanks_intent": {
+                "ima": 1,
+                "kasih": 1,
+                "nuhun": 1,
+                "hatur": 1
+              },
+              "greeting": {
+                "halo": 1,
+                "hai": 1,
+                "helo": 1,
+                "hello": 1
+              },
+              "greeting_islam": {
+                "assalamualaikum": 1,
+                "assala": 1,
+                "alaikum": 1
+              },
+              "memanggil": {
+                "dude": 1,
+                "brader": 1,
+                "bray": 1,
+                "bro": 1,
+                "cuy": 1
+              },
+              "get_password": {
+                "password": 1,
+                "for": 1,
+                "{ssid}": 1,
+                "kata": 1,
+                "sandi": 1
+              },
+              "add_ssid": {
+                "tambah": 1,
+                "ssid": 1,
+                "password": 1
+              },
+              "delete_ssid": {
+                "hapus": 1,
+                "ssid": 1
+              },
+              "ubah_ssid": {
+                "ubah": 1,
+                "ssid": 1,
+                "rubah": 1
+              },
+              "list_ssid": {
+                "list": 1,
+                "ssid": 1,
+                "daftar": 1
+              },
+              "list_switch": {
+                "list": 1,
+                "switch": 1,
+                "daftar": 1
+              },
+              "get_switch": {
+                "switch": 1
+              },
+              "help": {
+                "help": 1
+              }
+            },
+            "featuresToIntent": {
+              "internet": [
+                "internet_issue"
+              ],
+              "mati": [
+                "internet_issue",
+                "printer_issue"
+              ],
+              "error": [
+                "internet_issue",
+                "printer_issue"
+              ],
+              "lemot": [
+                "internet_issue",
+                "printer_issue"
+              ],
+              "dc": [
+                "internet_issue",
+                "printer_issue"
+              ],
+              "gak": [
+                "internet_issue",
+                "printer_issue"
+              ],
+              "jalan": [
+                "internet_issue",
+                "printer_issue"
+              ],
+              "^baik$": [
+                "internet_issue_success"
+              ],
+              "^baik": [
+                "internet_issue_success"
+              ],
+              "ima": [
+                "internet_issue_success",
+                "thanks_intent"
+              ],
+              "kasih$": [
+                "internet_issue_success"
+              ],
+              "^ok": [
+                "internet_issue_success"
+              ],
+              "printer": [
+                "printer_issue"
+              ],
+              "kasih": [
+                "thanks_intent"
+              ],
+              "nuhun": [
+                "thanks_intent"
+              ],
+              "hatur": [
+                "thanks_intent"
+              ],
+              "halo": [
+                "greeting"
+              ],
+              "hai": [
+                "greeting"
+              ],
+              "helo": [
+                "greeting"
+              ],
+              "hello": [
+                "greeting"
+              ],
+              "assalamualaikum": [
+                "greeting_islam"
+              ],
+              "assala": [
+                "greeting_islam"
+              ],
+              "alaikum": [
+                "greeting_islam"
+              ],
+              "dude": [
+                "memanggil"
+              ],
+              "brader": [
+                "memanggil"
+              ],
+              "bray": [
+                "memanggil"
+              ],
+              "bro": [
+                "memanggil"
+              ],
+              "cuy": [
+                "memanggil"
+              ],
+              "password": [
+                "get_password",
+                "add_ssid"
+              ],
+              "for": [
+                "get_password"
+              ],
+              "{ssid}": [
+                "get_password"
+              ],
+              "kata": [
+                "get_password"
+              ],
+              "sandi": [
+                "get_password"
+              ],
+              "tambah": [
+                "add_ssid"
+              ],
+              "ssid": [
+                "add_ssid",
+                "delete_ssid",
+                "ubah_ssid",
+                "list_ssid"
+              ],
+              "hapus": [
+                "delete_ssid"
+              ],
+              "ubah": [
+                "ubah_ssid"
+              ],
+              "rubah": [
+                "ubah_ssid"
+              ],
+              "list": [
+                "list_ssid",
+                "list_switch"
+              ],
+              "daftar": [
+                "list_ssid",
+                "list_switch"
+              ],
+              "switch": [
+                "list_switch",
+                "get_switch"
+              ],
+              "help": [
+                "help"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "id",
+                "tag": "nlu-id",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "internet",
+                "mati",
+                "error",
+                "lemot",
+                "dc",
+                "gak",
+                "jalan",
+                "^baik$",
+                "^baik",
+                "ima",
+                "kasih$",
+                "^ok",
+                "printer",
+                "kasih",
+                "nuhun",
+                "hatur",
+                "halo",
+                "hai",
+                "helo",
+                "hello",
+                "assalamualaikum",
+                "assala",
+                "alaikum",
+                "dude",
+                "brader",
+                "bray",
+                "bro",
+                "cuy",
+                "password",
+                "for",
+                "{ssid}",
+                "kata",
+                "sandi",
+                "tambah",
+                "ssid",
+                "hapus",
+                "ubah",
+                "rubah",
+                "list",
+                "daftar",
+                "switch",
+                "help"
+              ],
+              "intents": [
+                "internet_issue",
+                "internet_issue_success",
+                "printer_issue",
+                "thanks_intent",
+                "greeting",
+                "greeting_islam",
+                "memanggil",
+                "get_password",
+                "add_ssid",
+                "delete_ssid",
+                "ubah_ssid",
+                "list_ssid",
+                "list_switch",
+                "get_switch",
+                "help"
+              ],
+              "perceptrons": [
+                [
+                  11.839397430419922,
+                  2.052537202835083,
+                  2.0526044368743896,
+                  2.0525848865509033,
+                  2.052544116973877,
+                  1.0262843370437622,
+                  1.0262843370437622,
+                  -0.5668206810951233,
+                  -0.2436162233352661,
+                  -0.7509180307388306,
+                  -0.5174385905265808,
+                  -0.2036312222480774,
+                  -2.5980989933013916,
+                  -0.18952952325344086,
+                  -0.6106538772583008,
+                  -0.22705087065696716,
+                  -0.4590374231338501,
+                  -0.4476526081562042,
+                  -0.43948906660079956,
+                  -0.43128764629364014,
+                  -0.42211610078811646,
+                  -0.2855307459831238,
+                  -0.2855307459831238,
+                  -0.41149523854255676,
+                  -0.4061450660228729,
+                  -0.4016358554363251,
+                  -0.3980610966682434,
+                  -0.3956855237483978,
+                  -0.4422603249549866,
+                  -0.11905612051486969,
+                  -0.11905612051486969,
+                  -0.234858438372612,
+                  -0.234858438372612,
+                  -0.05068589374423027,
+                  -0.5070087313652039,
+                  -0.10003332793712616,
+                  -0.08955282717943192,
+                  -0.07939477264881134,
+                  -0.1879321038722992,
+                  -0.1693105697631836,
+                  -0.4269908368587494,
+                  -0.3937457203865051,
+                  0.39374895761371737
+                ],
+                [
+                  -0.5090929865837097,
+                  -0.3351059556007385,
+                  -0.3345710337162018,
+                  -0.3345469832420349,
+                  -0.3345130383968353,
+                  -0.16727760434150696,
+                  -0.16727760434150696,
+                  13.439359664916992,
+                  3.466073989868164,
+                  3.04398250579834,
+                  6.931977272033691,
+                  3.4659042358398438,
+                  -0.9911007285118103,
+                  -3.8879904747009277,
+                  -0.8559227585792542,
+                  -0.26803454756736755,
+                  -0.8455827236175537,
+                  -0.8447219729423523,
+                  -0.8442112803459167,
+                  -0.8439373970031738,
+                  -0.8438037633895874,
+                  -0.42452898621559143,
+                  -0.42452898621559143,
+                  -0.8437349200248718,
+                  -0.8436707258224487,
+                  -0.8435949087142944,
+                  -0.8435065746307373,
+                  -0.8434048891067505,
+                  -0.8433446288108826,
+                  -0.13162432610988617,
+                  -0.13162432610988617,
+                  -0.42184609174728394,
+                  -0.42184609174728394,
+                  -0.04930185154080391,
+                  -0.6787858009338379,
+                  -0.1650271862745285,
+                  -0.16492706537246704,
+                  -0.16490438580513,
+                  -0.21505461633205414,
+                  -0.20168326795101166,
+                  -0.8432123064994812,
+                  -0.8430061340332031,
+                  0.8436607294702135
+                ],
+                [
+                  -2.4902145862579346,
+                  2.0765671730041504,
+                  2.076606273651123,
+                  2.0765976905822754,
+                  2.076570749282837,
+                  1.0382931232452393,
+                  1.0382931232452393,
+                  -0.3735996186733246,
+                  -0.03117363713681698,
+                  -0.4556036591529846,
+                  -0.06609146296977997,
+                  -0.02227126993238926,
+                  11.835521697998047,
+                  -0.3552473485469818,
+                  -0.7324723601341248,
+                  -0.2889052927494049,
+                  -0.4917598068714142,
+                  -0.47693341970443726,
+                  -0.4625144898891449,
+                  -0.45511192083358765,
+                  -0.44234389066696167,
+                  -0.312388151884079,
+                  -0.312388151884079,
+                  -0.42592811584472656,
+                  -0.41818585991859436,
+                  -0.4104689359664917,
+                  -0.4031711518764496,
+                  -0.39735981822013855,
+                  -0.5133692026138306,
+                  -0.1347883641719818,
+                  -0.1347883641719818,
+                  -0.2553034722805023,
+                  -0.2553034722805023,
+                  -0.0704069584608078,
+                  -0.6437552571296692,
+                  -0.11378426104784012,
+                  -0.1015453040599823,
+                  -0.08961676806211472,
+                  -0.2266526073217392,
+                  -0.2036573886871338,
+                  -0.4734898507595062,
+                  -0.37783941626548767,
+                  0.37360554919758193
+                ],
+                [
+                  -0.6494491100311279,
+                  -0.28882062435150146,
+                  -0.28870704770088196,
+                  -0.28858238458633423,
+                  -0.2884431481361389,
+                  -0.1444052755832672,
+                  -0.1444052755832672,
+                  -0.93268883228302,
+                  -1.9031885862350464,
+                  4.771797180175781,
+                  -3.8061206340789795,
+                  -1.9029057025909424,
+                  -0.648350715637207,
+                  8.57798957824707,
+                  13.162171363830566,
+                  0.28485190868377686,
+                  -0.9369767904281616,
+                  -0.9367572069168091,
+                  -0.9365290999412537,
+                  -0.9362924098968506,
+                  -0.9360461831092834,
+                  -0.4962770342826843,
+                  -0.4962770342826843,
+                  -0.9357823133468628,
+                  -0.9355129599571228,
+                  -0.935232400894165,
+                  -0.9349395632743835,
+                  -0.934634268283844,
+                  -0.9343988299369812,
+                  -0.18529172241687775,
+                  -0.18529172241687775,
+                  -0.46849575638771057,
+                  -0.46849575638771057,
+                  -0.07703795284032822,
+                  -0.7823585271835327,
+                  -0.1687215268611908,
+                  -0.15880247950553894,
+                  -0.15455560386180878,
+                  -0.29869958758354187,
+                  -0.2718324363231659,
+                  -0.9339113831520081,
+                  -0.9334913492202759,
+                  0.9379752465744844
+                ],
+                [
+                  -1.9036096334457397,
+                  -0.8460344076156616,
+                  -0.8460256457328796,
+                  -0.8460192680358887,
+                  -0.846015214920044,
+                  -0.42301681637763977,
+                  -0.42301681637763977,
+                  -2.7478737831115723,
+                  -0.3856905996799469,
+                  -1.7433300018310547,
+                  -0.7362033724784851,
+                  -0.346553772687912,
+                  -1.9035084247589111,
+                  -1.006122350692749,
+                  -2.7474517822265625,
+                  -0.6360003352165222,
+                  11.53543472290039,
+                  11.534994125366211,
+                  11.534200668334961,
+                  11.533269882202148,
+                  -2.753157138824463,
+                  -1.4311997890472412,
+                  -1.4311997890472412,
+                  -2.750962495803833,
+                  -2.750131368637085,
+                  -2.7497799396514893,
+                  -2.7495903968811035,
+                  -2.749366521835327,
+                  -2.749284029006958,
+                  -0.4740564525127411,
+                  -0.4740564525127411,
+                  -1.375046968460083,
+                  -1.375046968460083,
+                  -0.13672883808612823,
+                  -2.2086942195892334,
+                  -0.550741970539093,
+                  -0.5428109765052795,
+                  -0.5413889288902283,
+                  -0.7364508509635925,
+                  -0.6905501484870911,
+                  -2.749070167541504,
+                  -2.748497247695923,
+                  2.7496260789509543
+                ],
+                [
+                  -0.7387406826019287,
+                  -0.3330592215061188,
+                  -0.32258734107017517,
+                  -0.3151019215583801,
+                  -0.31392985582351685,
+                  -0.16481126844882965,
+                  -0.16481126844882965,
+                  -1.0267778635025024,
+                  -0.16687211394309998,
+                  -0.6760547757148743,
+                  -0.3216148018836975,
+                  -0.1450764387845993,
+                  -0.7134507298469543,
+                  -0.35131779313087463,
+                  -1.0267505645751953,
+                  -0.2690119743347168,
+                  -1.0265415906906128,
+                  -1.026392936706543,
+                  -1.026224136352539,
+                  -1.0260342359542847,
+                  13.25625991821289,
+                  6.629374027252197,
+                  6.629374027252197,
+                  -1.0316874980926514,
+                  -1.0295358896255493,
+                  -1.0282362699508667,
+                  -1.0275201797485352,
+                  -1.0271601676940918,
+                  -1.0275746583938599,
+                  -0.21574652194976807,
+                  -0.21574652194976807,
+                  -0.5254627466201782,
+                  -0.5254627466201782,
+                  -0.07054246217012405,
+                  -0.8839625716209412,
+                  -0.20901961624622345,
+                  -0.1959886997938156,
+                  -0.18489417433738708,
+                  -0.33330604434013367,
+                  -0.3088274896144867,
+                  -1.0273499488830566,
+                  -1.026884913444519,
+                  1.0269312120483547
+                ],
+                [
+                  -2.468536376953125,
+                  -1.1082478761672974,
+                  -1.085196614265442,
+                  -1.0689581632614136,
+                  -1.057568073272705,
+                  -0.5458680987358093,
+                  -0.5458680987358093,
+                  -3.419811248779297,
+                  -0.5500620007514954,
+                  -2.2517547607421875,
+                  -1.0516706705093384,
+                  -0.48350945115089417,
+                  -2.400461196899414,
+                  -1.196128487586975,
+                  -3.4198009967803955,
+                  -0.8855130672454834,
+                  -3.4191794395446777,
+                  -3.4187633991241455,
+                  -3.418283700942993,
+                  -3.4177355766296387,
+                  -3.417116403579712,
+                  -1.709672451019287,
+                  -1.709672451019287,
+                  10.865777969360352,
+                  10.865460395812988,
+                  10.864805221557617,
+                  10.86402416229248,
+                  10.863114356994629,
+                  -3.4328699111938477,
+                  -0.6862465143203735,
+                  -0.6862465143203735,
+                  -1.7761030197143555,
+                  -1.7761030197143555,
+                  -0.22461582720279694,
+                  -2.9376914501190186,
+                  -0.7100887298583984,
+                  -0.6756196022033691,
+                  -0.6459343433380127,
+                  -1.0795576572418213,
+                  -0.9965245127677917,
+                  -3.430321455001831,
+                  -3.4203338623046875,
+                  3.4198171024992803
+                ],
+                [
+                  -0.8913519978523254,
+                  -0.3847754895687103,
+                  -0.3672400414943695,
+                  -0.33825042843818665,
+                  -0.310453861951828,
+                  -0.20492322742938995,
+                  -0.20492322742938995,
+                  -1.0073972940444946,
+                  -0.19903817772865295,
+                  -0.7107970714569092,
+                  -0.39679980278015137,
+                  -0.16569525003433228,
+                  -0.7549253106117249,
+                  -0.3006187677383423,
+                  -1.0068333148956299,
+                  -0.2786826491355896,
+                  -1.0062469244003296,
+                  -1.0057129859924316,
+                  -1.005158543586731,
+                  -1.0045832395553589,
+                  -1.0039860010147095,
+                  -0.504494845867157,
+                  -0.504494845867157,
+                  -1.0031458139419556,
+                  -1.0024946928024292,
+                  -1.0018194913864136,
+                  -1.0011193752288818,
+                  -1.0003936290740967,
+                  12.998520851135254,
+                  0.16606053709983826,
+                  0.16606053709983826,
+                  6.634568214416504,
+                  6.634568214416504,
+                  -6.648676872253418,
+                  -7.303591728210449,
+                  -0.14601507782936096,
+                  -0.12202513962984085,
+                  -0.10322736948728561,
+                  -0.3754085302352905,
+                  -0.33601680397987366,
+                  -1.0091791152954102,
+                  -1.0084106922149658,
+                  1.0141379395859897
+                ],
+                [
+                  -0.11223048716783524,
+                  -0.04320540651679039,
+                  -0.03919527679681778,
+                  -0.035048939287662506,
+                  -0.031071001663804054,
+                  -0.024801550433039665,
+                  -0.024801550433039665,
+                  -0.027922481298446655,
+                  -0.018106350675225258,
+                  -0.06089300289750099,
+                  -0.04074642062187195,
+                  -0.015315853990614414,
+                  -0.08222253620624542,
+                  -0.013210868462920189,
+                  -0.03694778308272362,
+                  -0.014143908396363258,
+                  -0.020237011834979057,
+                  -0.019435754045844078,
+                  -0.018666144460439682,
+                  -0.017926936969161034,
+                  -0.01721693016588688,
+                  -0.015660710632801056,
+                  -0.015660710632801056,
+                  -0.015916040167212486,
+                  -0.015285433270037174,
+                  -0.01467975229024887,
+                  -0.014098016545176506,
+                  -0.013539278879761696,
+                  2.481966733932495,
+                  -1.1858373880386353,
+                  -1.1858373880386353,
+                  -0.0010068985866382718,
+                  -0.0010068985866382718,
+                  10.435098648071289,
+                  3.7790141105651855,
+                  -1.3398503065109253,
+                  -1.3406565189361572,
+                  -1.3406959772109985,
+                  -1.3403258323669434,
+                  -1.3396883010864258,
+                  -0.06368931382894516,
+                  -0.03312008082866669,
+                  -2.436677175197495
+                ],
+                [
+                  -0.16133511066436768,
+                  -0.06760895997285843,
+                  -0.061541732400655746,
+                  -0.055469367653131485,
+                  -0.04969816654920578,
+                  -0.03651997074484825,
+                  -0.03651997074484825,
+                  -0.09866004437208176,
+                  -0.03163311630487442,
+                  -0.10726570338010788,
+                  -0.06700198352336884,
+                  -0.026427695527672768,
+                  -0.12554535269737244,
+                  -0.034331440925598145,
+                  -0.10376933217048645,
+                  -0.03883307799696922,
+                  -0.09785836189985275,
+                  -0.09778795391321182,
+                  -0.09775672852993011,
+                  -0.0977453663945198,
+                  -0.09774044156074524,
+                  -0.049401793628931046,
+                  -0.049401793628931046,
+                  -0.0977337583899498,
+                  -0.09772652387619019,
+                  -0.09771804511547089,
+                  -0.09770822525024414,
+                  -0.09769695997238159,
+                  -1.1245125532150269,
+                  -0.007651999592781067,
+                  -0.007651999592781067,
+                  -0.04886777698993683,
+                  -0.04886777698993683,
+                  -1.098883867263794,
+                  2.1257412433624268,
+                  12.060514450073242,
+                  -2.2233500480651855,
+                  -2.2234177589416504,
+                  -2.223214626312256,
+                  -2.2227864265441895,
+                  -0.1214849203824997,
+                  -0.1001708135008812,
+                  0.09774366749139368
+                ],
+                [
+                  -0.38245654106140137,
+                  -0.15261080861091614,
+                  -0.14776620268821716,
+                  -0.13322758674621582,
+                  -0.1194198802113533,
+                  -0.08563736081123352,
+                  -0.08563736081123352,
+                  -0.19678272306919098,
+                  -0.07974247634410858,
+                  -0.2497476488351822,
+                  -0.15795566141605377,
+                  -0.05679592117667198,
+                  -0.2986339032649994,
+                  -0.07855434715747833,
+                  -0.23262788355350494,
+                  -0.08827269822359085,
+                  -0.18059176206588745,
+                  -0.17836463451385498,
+                  -0.17668473720550537,
+                  -0.1754744052886963,
+                  -0.17471668124198914,
+                  -0.10578058660030365,
+                  -0.10578058660030365,
+                  -0.17413458228111267,
+                  -0.1739473044872284,
+                  -0.17387601733207703,
+                  -0.17385485768318176,
+                  -0.1738467961549759,
+                  -2.255568504333496,
+                  -0.015495942905545235,
+                  -0.015495942905545235,
+                  -0.09166253358125687,
+                  -0.09166253358125687,
+                  -2.1951847076416016,
+                  4.275987148284912,
+                  -4.4482855796813965,
+                  9.835110664367676,
+                  9.834485054016113,
+                  -4.449538707733154,
+                  -4.449354648590088,
+                  -0.2943670153617859,
+                  -0.21047215163707733,
+                  0.1738495619014237
+                ],
+                [
+                  -0.39855533838272095,
+                  -0.1630333662033081,
+                  -0.1481250822544098,
+                  -0.13302476704120636,
+                  -0.11863002926111221,
+                  -0.08649510145187378,
+                  -0.08649510145187378,
+                  -0.1404702216386795,
+                  -0.07306891679763794,
+                  -0.246604323387146,
+                  -0.15855297446250916,
+                  -0.061312202364206314,
+                  -0.3057529926300049,
+                  -0.06804602593183517,
+                  -0.19243603944778442,
+                  -0.07659073173999786,
+                  -0.10904954373836517,
+                  -0.10496833175420761,
+                  -0.10103847831487656,
+                  -0.0972544476389885,
+                  -0.09361087530851364,
+                  -0.07221808284521103,
+                  -0.07221808284521103,
+                  -0.08708032965660095,
+                  -0.08381365239620209,
+                  -0.08066847175359726,
+                  -0.07764031738042831,
+                  -0.07472488284111023,
+                  -2.671355724334717,
+                  -0.018824009224772453,
+                  -0.018824009224772453,
+                  -0.06272110342979431,
+                  -0.06272110342979431,
+                  -2.597754716873169,
+                  6.899065971374512,
+                  -5.263360023498535,
+                  -5.261600017547607,
+                  -5.258481502532959,
+                  8.999491691589355,
+                  8.999275207519531,
+                  -7.3655595779418945,
+                  -0.16025204956531525,
+                  -1.6284432176579628
+                ],
+                [
+                  -0.4984172284603119,
+                  -0.19828537106513977,
+                  -0.19236165285110474,
+                  -0.1733894795179367,
+                  -0.1553686112165451,
+                  -0.11144345253705978,
+                  -0.11144345253705978,
+                  -0.21038098633289337,
+                  -0.10362780839204788,
+                  -0.32297220826148987,
+                  -0.20535708963871002,
+                  -0.07359793782234192,
+                  -0.38894200325012207,
+                  -0.10002575814723969,
+                  -0.2807196378707886,
+                  -0.11286026239395142,
+                  -0.1694783866405487,
+                  -0.16333934664726257,
+                  -0.16731689870357513,
+                  -0.16160807013511658,
+                  -0.15608812868595123,
+                  -0.12328916043043137,
+                  -0.12328916043043137,
+                  -0.1464235484600067,
+                  -0.14140357077121735,
+                  -0.13655076920986176,
+                  -0.13185983896255493,
+                  -0.12732556462287903,
+                  -0.18557952344417572,
+                  -0.052971020340919495,
+                  -0.052971020340919495,
+                  -0.09492864459753036,
+                  -0.09492864459753036,
+                  -0.016208354383707047,
+                  -8.389240264892578,
+                  -0.02629317156970501,
+                  -0.02148640714585781,
+                  -0.014108775183558464,
+                  12.276603698730469,
+                  12.26995849609375,
+                  5.058651447296143,
+                  -0.23555950820446014,
+                  -3.712147641581089
+                ],
+                [
+                  -0.44274845719337463,
+                  -0.196721151471138,
+                  -0.1964518278837204,
+                  -0.19616833329200745,
+                  -0.19587470591068268,
+                  -0.0984097272157669,
+                  -0.0984097272157669,
+                  -0.6229131817817688,
+                  -0.07959870249032974,
+                  -0.40064993500709534,
+                  -0.167236790060997,
+                  -0.07404032349586487,
+                  -0.4414066672325134,
+                  -0.23153220117092133,
+                  -0.6209982633590698,
+                  -0.11124179512262344,
+                  -0.6199476718902588,
+                  -0.6189107298851013,
+                  -0.6178569197654724,
+                  -0.6167859435081482,
+                  -0.61569744348526,
+                  -0.3133060336112976,
+                  -0.3133060336112976,
+                  -0.6141219139099121,
+                  -0.6129903793334961,
+                  -0.6118404865264893,
+                  -0.6106720566749573,
+                  -0.6094851493835449,
+                  -0.6083072423934937,
+                  -0.05719936266541481,
+                  -0.05719936266541481,
+                  -0.3101862668991089,
+                  -0.3101862668991089,
+                  -0.01872847229242325,
+                  -0.48104584217071533,
+                  -0.1441895216703415,
+                  -0.14345961809158325,
+                  -0.14271824061870575,
+                  -12.339777946472168,
+                  -12.31446647644043,
+                  12.253482818603516,
+                  -0.6258164644241333,
+                  0.6415486555955582
+                ],
+                [
+                  -0.5534828901290894,
+                  -0.24985365569591522,
+                  -0.2391112893819809,
+                  -0.23063552379608154,
+                  -0.22298412024974823,
+                  -0.12497740983963013,
+                  -0.12497740983963013,
+                  -0.6812143921852112,
+                  -0.1256849467754364,
+                  -0.487061470746994,
+                  -0.24626250565052032,
+                  -0.10970427840948105,
+                  -0.5188013315200806,
+                  -0.23765262961387634,
+                  -0.6835945248603821,
+                  -0.20065638422966003,
+                  -0.6788855791091919,
+                  -0.6784063577651978,
+                  -0.6781479716300964,
+                  -0.6780227422714233,
+                  -0.6779606938362122,
+                  -0.3402054011821747,
+                  -0.3402054011821747,
+                  -0.6778815388679504,
+                  -0.6777978539466858,
+                  -0.6777012348175049,
+                  -0.6775907874107361,
+                  -0.6774659156799316,
+                  -0.6773747801780701,
+                  -0.10516909509897232,
+                  -0.10516909509897232,
+                  -0.3389330208301544,
+                  -0.3389330208301544,
+                  -0.02549891732633114,
+                  -0.5372468829154968,
+                  -0.1406937539577484,
+                  -0.14065313339233398,
+                  -0.14062215387821198,
+                  -0.16404706239700317,
+                  -0.15508736670017242,
+                  -0.6772177815437317,
+                  13.605108261108398,
+                  0.6779905677144411
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "id",
+        "internet mati"
+      ],
+      [
+        "id",
+        "internet error"
+      ],
+      [
+        "id",
+        "internet lemot"
+      ],
+      [
+        "id",
+        "internet dc"
+      ],
+      [
+        "id",
+        "internet gak jalan"
+      ],
+      [
+        "id",
+        "^baik$"
+      ],
+      [
+        "id",
+        "^baik, terima kasih$"
+      ],
+      [
+        "id",
+        "^ok, terima kasih$"
+      ],
+      [
+        "id",
+        "printer mati"
+      ],
+      [
+        "id",
+        "printer error"
+      ],
+      [
+        "id",
+        "printer lemot"
+      ],
+      [
+        "id",
+        "printer dc"
+      ],
+      [
+        "id",
+        "printer gak jalan"
+      ],
+      [
+        "id",
+        "terima kasih"
+      ],
+      [
+        "id",
+        "nuhun"
+      ],
+      [
+        "id",
+        "hatur nuhun"
+      ],
+      [
+        "id",
+        "Halo"
+      ],
+      [
+        "id",
+        "Hai"
+      ],
+      [
+        "id",
+        "Helo"
+      ],
+      [
+        "id",
+        "Hello"
+      ],
+      [
+        "id",
+        "Assalamualaikum"
+      ],
+      [
+        "id",
+        "Assalamu'alaikum"
+      ],
+      [
+        "id",
+        "Dude"
+      ],
+      [
+        "id",
+        "Brader"
+      ],
+      [
+        "id",
+        "Bray"
+      ],
+      [
+        "id",
+        "Bro"
+      ],
+      [
+        "id",
+        "Cuy"
+      ],
+      [
+        "id",
+        "password"
+      ],
+      [
+        "id",
+        "password for {SSID}"
+      ],
+      [
+        "id",
+        "kata sandi"
+      ],
+      [
+        "id",
+        "tambah ssid password"
+      ],
+      [
+        "id",
+        "hapus ssid"
+      ],
+      [
+        "id",
+        "ubah ssid"
+      ],
+      [
+        "id",
+        "rubah ssid"
+      ],
+      [
+        "id",
+        "list ssid"
+      ],
+      [
+        "id",
+        "daftar ssid"
+      ],
+      [
+        "id",
+        "list switch"
+      ],
+      [
+        "id",
+        "daftar switch"
+      ],
+      [
+        "id",
+        "switch "
+      ],
+      [
+        "id",
+        "help"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {
+      "ssid": {
+        "SSID": {
+          "name": "SSID",
+          "type": "enum",
+          "rules": [
+            {
+              "option": "id",
+              "texts": [
+                "id"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {}
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
