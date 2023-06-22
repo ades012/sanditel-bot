@@ -252,8 +252,6 @@ function runTelegramBot() {
           const internetResponse = intentData?.responses[0];
           const additionalResponseYes = intentData?.responses[1];
           const additionalResponseNo = intentData?.responses[2];
-
-          // const successResponse = dataset.intents.find((item) => item.tag === 'internet_issue_success')?.responses[0];
     
           bot.sendMessage(chatId, internetResponse)
             .then(() => {
