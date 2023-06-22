@@ -5,3 +5,6 @@ Untuk menjalankannya anda membutuhkan :
 1. Node JS
 2. MariaDB
 
+## Cara Install Sanditel-bot
+1. Pull repository ini 'git clone 
+
