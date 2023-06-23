@@ -14,8 +14,9 @@
           "Baik, sekarang bantu saya membuka command prompt, silahkan tekan Windows pada keyboard, kemudian ketikkan command prompt lalu tekan Enter \n \n Setelah itu silahkan ketik 'ipconfig /all | findstr /i \"IPv4\"' tanpa tanda petik seperti gambar berikut",
           "Baik, apakah anda tidak bisa mengakses beberapa website saja, atau tidak bisa menggunakan internet sama sekali ?"
         ],
-          "ipAddressMessage": "Silahkan kirimkan IP Address yang muncul, kirim dalam bentuk teks, misal: 192.168.0.23",
+          "ipAddressMessage": "Apakah output-nya seperti gambar di atas ? \n jika iya coba kirimkan alamat IP yang muncul dalam bentuk teks \n Misalkan dalam contoh saya : 192.168.0.23",
           "technicalAssistanceMessage": "Baik, saya sudah mendapatkan inti permasalahannya dan perlu bantuan dari tim teknis. Saya akan menghubungi teknisi agar masalah Anda segera ditangani.",
+          "lanWifiMessage": "Baik, apakah saat ini anda menggunakan Kabel LAN atau WiFi ?",
           "nameDepartmentMessage": "Baik saya sudah mengetahui kemungkinan permasalahannya, \n sebelumnya maaf ini dengan siapa dan dari bagian apa?",
           "reportIssueMessage" :"Terkait Permasalahan ini sudah saya infokan ke tim teknis untuk segera ditangani. \n Untuk updatenya akan saya infokan kembali."
       },

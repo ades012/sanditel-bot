@@ -78,6 +78,7 @@ function runTelegramBot() {
           bot.sendMessage(chatId, response);
         break;
         case 'get_password':
+          if (message.includes('password ')) {  
           requestedSSID = message.split('password ')[1].trim().toLowerCase();
           const query = `SELECT ssid, password FROM wifi WHERE ssid LIKE '%${requestedSSID}%'`;
 
@@ -97,6 +98,9 @@ function runTelegramBot() {
               bot.sendMessage(chatId, response);
             }
           });
+        } else {
+          bot.sendMessage(chatId, 'Format pesan tidak valid. Mohon sertakan "password <SSID>".');
+        }
         break;
         case 'get_switch':
           const requestedNAME = message.split('switch ')[1].trim().toLowerCase();
@@ -252,7 +256,7 @@ function runTelegramBot() {
           const internetResponse = intentData?.responses[0];
           const additionalResponseYes = intentData?.responses[1];
           const additionalResponseNo = intentData?.responses[2];
-    
+          const lanWifiMessage = intentData?.lanWifiMessage;
           bot.sendMessage(chatId, internetResponse)
             .then(() => {
               const imagePath = path.join(__dirname, 'pict', 'internet_issue_1.jpg');
@@ -268,6 +272,7 @@ function runTelegramBot() {
               const positiveListener = (msg) => {
                 const userResponse = msg.text.toLowerCase();
                 const containsPositiveResponse = positiveResponses.some(response => userResponse.includes(response));
+                const containsNegativeResponse = negativeResponses.some(response => userResponse.includes(response));
                  if (containsPositiveResponse) {
                   const chatId = msg.chat.id;
                   bot.sendMessage(chatId, additionalResponseYes)
@@ -281,7 +286,6 @@ function runTelegramBot() {
                       
                       const ipAddressMessage = intentData?.ipAddressMessage;
                       bot.sendMessage(chatId, ipAddressMessage);
-              
                       bot.onText(/^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/, (ipMsg, match) => {
                         const userIpAddress = match[1];
                         if (userIpAddress.startsWith('169')) {
@@ -318,8 +322,21 @@ function runTelegramBot() {
                             });
                           })
                         } else {
-                          // Continue with the next message handling            
-                          // ...
+                          const negativePattern = /^(tidak|no|bukan|cancel|batalkan)$/i;
+                          bot.onText(negativePattern, (msg) => {
+                            const userResponse = msg.text.toLowerCase();
+                            if (negativeResponses.includes(userResponse)) {
+                              const lanWifiResponse = intentData?.lanWifiMessage;
+                              bot.sendMessage(chatId, lanWifiResponse)
+                                .then(() => {
+                                  // Lakukan tindakan lanjutan setelah merespons negatif
+                                  // ...
+                                })
+                                .catch((error) => {
+                                  console.error('Terjadi kesalahan:', error);
+                                });
+                            }
+                          });
                         }
                       });
                     })
@@ -330,7 +347,6 @@ function runTelegramBot() {
               };
             
               bot.onText(positivePattern, positiveListener);
-    
               bot.onText(negativePattern, (msg) => {
                 const userResponse = msg.text.toLowerCase();
                 if (negativeResponses.includes(userResponse)) {
