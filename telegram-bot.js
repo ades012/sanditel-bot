@@ -67,7 +67,7 @@ function runTelegramBot() {
 
     processMessage(message, (intent) => {
       console.log(`Intent: ${intent}`);
-      let requestedSSID = '';
+      // let requestedSSID = '';
       switch (intent) {
         case 'thanks_intent':
         case 'greeting':
@@ -285,7 +285,25 @@ function runTelegramBot() {
                       bot.removeTextListener(positivePattern, positiveListener);
                       
                       const ipAddressMessage = intentData?.ipAddressMessage;
-                      bot.sendMessage(chatId, ipAddressMessage);
+                      bot.sendMessage(chatId, ipAddressMessage)
+                      .then(() => {
+                        bot.removeTextListener(negativePattern);
+                        
+                        bot.onText(negativePattern, (msg) => {
+                          const userResponse = msg.text.toLowerCase();
+                          if (negativeResponses.includes(userResponse)) {
+                            const lanWifiResponse = intentData?.lanWifiMessage;
+                            bot.sendMessage(chatId, lanWifiResponse)
+                              .then(() => {
+                                // Lakukan tindakan lanjutan setelah merespons negatif
+                                // ...
+                              })
+                              .catch((error) => {
+                                console.error('Terjadi kesalahan:', error);
+                              });
+                            }
+                          })
+                        });
                       bot.onText(/^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/, (ipMsg, match) => {
                         const userIpAddress = match[1];
                         if (userIpAddress.startsWith('169')) {
@@ -322,21 +340,6 @@ function runTelegramBot() {
                             });
                           })
                         } else {
-                          const negativePattern = /^(tidak|no|bukan|cancel|batalkan)$/i;
-                          bot.onText(negativePattern, (msg) => {
-                            const userResponse = msg.text.toLowerCase();
-                            if (negativeResponses.includes(userResponse)) {
-                              const lanWifiResponse = intentData?.lanWifiMessage;
-                              bot.sendMessage(chatId, lanWifiResponse)
-                                .then(() => {
-                                  // Lakukan tindakan lanjutan setelah merespons negatif
-                                  // ...
-                                })
-                                .catch((error) => {
-                                  console.error('Terjadi kesalahan:', error);
-                                });
-                            }
-                          });
                         }
                       });
                     })
