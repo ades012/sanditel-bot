@@ -34,7 +34,7 @@ Untuk menjalankannya anda membutuhkan :
    `TELEGRAM_GROUP=<'id grup telegram'>`
 8. Untuk Operasi CRUD untuk WiFi dan Switch silahkan operasikan sesuka hati, anda bisa menyesuaikan konfigurasi pada database maupun pada kode javascriptnya sesuai yang anda butuhkan.
 
-9. jalankan `node telegram-bot.js`
+9. jalankan `node index.js`
 10. Silahkan lakukan pengujian dengan melakukan konversasi dengan BOT
 11. Anda Juga bisa menambahkan pattern dan response baru pada dataset.
 
