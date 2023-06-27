@@ -1,6 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 const { processMessage } = require('./nlp');
 const { connectDatabase } = require('./db');
+const { connection } = require('./db');
 const negativeResponses = require('../dataset/negativeResponse');
 const positiveResponses = require('../dataset/positiveResponse');
 const { dataset } = require('./nlp');
@@ -29,17 +30,20 @@ function runTelegramBot() {
             bot.sendMessage(chatId, response);
           break;
           case 'get_password':
-            if (message.includes('password ')) {  
-            requestedSSID = message.split('password ')[1].trim().toLowerCase();
+          const passwordKeyword = 'password ';
+          const passwordIndex = message.toLowerCase().indexOf(passwordKeyword);
+          
+          if (passwordIndex !== -1) {
+            const requestedSSID = message.substring(passwordIndex + passwordKeyword.length).trim().toLowerCase();
             const query = `SELECT ssid, password FROM wifi WHERE ssid LIKE '%${requestedSSID}%'`;
-  
+
             connection.query(query, (err, rows) => {
               if (err) {
                 console.error('Error executing query:', err);
                 bot.sendMessage(chatId, 'Oops! An error occurred while fetching data.');
                 return;
               }
-  
+
               if (rows.length > 0) {
                 const result = rows[0];
                 const response = `Berikut password untuk SSID "${result.ssid}":\nSSID: ${result.ssid}\nPassword: ${result.password}`;
@@ -54,16 +58,20 @@ function runTelegramBot() {
           }
           break;
           case 'get_switch':
-            const requestedNAME = message.split('switch ')[1].trim().toLowerCase();
+          const switchKeyword = 'switch ';
+          const switchIndex = message.toLowerCase().indexOf(switchKeyword);
+
+          if (switchIndex !== -1) {
+            const requestedNAME = message.substring(switchIndex + switchKeyword.length).trim().toLowerCase();
             const switchQuery = `SELECT name, detail, ip, id, password FROM switch WHERE name LIKE '%${requestedNAME}%'`;
-  
+
             connection.query(switchQuery, (err, rows) => {
               if (err) {
                 console.error('Error executing query:', err);
                 bot.sendMessage(chatId, 'Oops! An error occurred while fetching data.');
                 return;
               }
-  
+
               if (rows.length > 0) {
                 const result = rows[0];
                 const response = `Berikut detail untuk Switch "${result.name}":\nNama : ${result.detail}\nIP Address : ${result.ip}\nId : ${result.id}\nPassword : ${result.password}`;
@@ -73,6 +81,9 @@ function runTelegramBot() {
                 bot.sendMessage(chatId, response);
               }
             });
+          } else {
+            bot.sendMessage(chatId, 'Format pesan tidak valid. Mohon sertakan "switch <nama switch>".');
+          }
           break;
           case 'list_ssid':
           const listQuery = 'SELECT ssid, password FROM wifi';  
