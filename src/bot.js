@@ -6,7 +6,7 @@ const negativeResponses = require('../dataset/negativeResponse');
 const positiveResponses = require('../dataset/positiveResponse');
 const { dataset } = require('./nlp');
 const path = require('path');
-
+// const id_tele = ['1111111','22222222','333333333'];
 function runTelegramBot() {
   const token = process.env.TELEGRAM_TOKEN;
   const bot = new TelegramBot(token, { polling: true });
@@ -34,8 +34,8 @@ function runTelegramBot() {
           const passwordIndex = message.toLowerCase().indexOf(passwordKeyword);
           
           if (passwordIndex !== -1) {
-            const requestedSSID = message.substring(passwordIndex + passwordKeyword.length).trim().toLowerCase();
-            const query = `SELECT ssid, password FROM wifi WHERE ssid LIKE '%${requestedSSID}%'`;
+            const requestedSSID = message.substring(passwordIndex + passwordKeyword.length).trim();
+            const query = `SELECT ssid, password FROM wifi WHERE ssid LIKE "${requestedSSID}"`;
 
             connection.query(query, (err, rows) => {
               if (err) {
@@ -135,7 +135,7 @@ function runTelegramBot() {
             const match = message.match(ssidRegex);
           
             if (match) {
-              const requestedSSID = match[1].trim().toLowerCase();
+              const requestedSSID = match[1].trim();
               const requestedPassword = match[2].trim();
           
               const insertQuery = `INSERT INTO wifi (ssid, password) VALUES (?, ?)`;
@@ -269,6 +269,7 @@ function runTelegramBot() {
                           const userIpAddress = match[1];
                           if (userIpAddress.startsWith('169')) {
                             const askNameDepartmentMessage = intentData?.nameDepartmentMessage;
+                            const reportMessageGroup = intentData?.reportMessageGroup;
                             bot.sendMessage(chatId, askNameDepartmentMessage)
                               .then(() => {
                                 bot.onText(/^(?:nama saya\s)?(\w+)\s?(?:dari\s)?(?:bagian\s)?(\w+)/i, (msg, match) => {
