@@ -138,6 +138,12 @@
         ]
       },
       {
+        "tag": "remove_switch",
+        "patterns": [
+          "hapus switch"
+        ]
+      },
+      {
         "tag": "ping_host",
         "patterns": [
           "apakah "

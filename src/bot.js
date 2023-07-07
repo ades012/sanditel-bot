@@ -20,6 +20,12 @@ function runTelegramBot() {
     processMessage(message, (intent) => {
         console.log(`Intent: ${intent}`);
         let requestedSSID = '';
+        let requestedSwitch = '';
+        let name = '';    
+        let detail = '';
+        let ip = '';
+        let id = '';
+        let password = '';    
         switch (intent) {
           case 'thanks_intent':
           case 'greeting':
@@ -245,6 +251,63 @@ function runTelegramBot() {
               bot.sendMessage(chatId, 'Oops! Invalid format for adding SSID. Please use the format: "tambah ssid [SSID] password [password]".');
             }
           break;
+          case 'remove_switch':
+            requestedSwitch = message.split('switch ')[1].trim().toLowerCase();
+  
+            const selectSwitchQuery = `SELECT name, detail, ip, id, password FROM switch WHERE name = ?`;
+            const valueSwitch = requestedSwitch;
+        
+            connection.query(selectSwitchQuery, valueSwitch, (err, rows) => {
+              if (err) {
+                console.error('Error executing select query:', err);
+                bot.sendMessage(chatId, 'Oops! An error occurred while fetching data.');
+                return;
+              }
+        
+              if (rows.length > 0) {
+                const name = rows[0].name;
+                const detail = rows[0].name;
+                const ip = rows[0].ip;
+                const id = rows[0].id;
+                const password = rows[0].password;
+        
+                const confirmationMessage = `Apakah Anda yakin ingin menghapus data untuk Switch  "${name}" dengan detail berikut ? (ya/tidak) : \n Detail  : "${detail}" \n ip       : "${ip}" \n id       : "${id}" \n Password : "${password}"`
+                bot.sendMessage(chatId, confirmationMessage).then(() => {
+                  bot.once('message', (confirmation) => {
+                    const confirmationText = confirmation.text.trim().toLowerCase();
+        
+                    if (confirmationText === 'ya') {
+                      const deleteQuery = `DELETE FROM switch WHERE name = ?`;
+        
+                      connection.query(deleteQuery, valueSwitch, (deleteErr, result) => {
+                        if (deleteErr) {
+                          console.error('Error executing delete query:', deleteErr);
+                          bot.sendMessage(chatId, 'Oops! An error occurred while deleting data.');
+                          return;
+                        }
+        
+                        if (result.affectedRows > 0) {
+                          const response = `Data untuk Switch "${name}" telah dihapus dari database.`;
+                          bot.sendMessage(chatId, response);
+                        } else {
+                          const response = `Maaf, terjadi kesalahan saat menghapus data untuk SSID "${name}".`;
+                          bot.sendMessage(chatId, response);
+                        }
+                      });
+                        } else if (confirmationText === 'tidak') {
+                          bot.sendMessage(chatId, 'Penghapusan data dibatalkan.');
+                        } else {
+                          bot.sendMessage(chatId, 'Mohon berikan jawaban "ya" atau "tidak".');
+                        }
+                      });
+                    });
+                } else {
+                  const response = `Maaf, data untuk Switch "${requestedSwitch}" tidak ditemukan dalam database.`;
+                  bot.sendMessage(chatId, response);
+              }
+            });
+          break;
+         
           case 'internet_issue':
             const intentData = dataset.intents.find((item) => item.tag === intent);
             const internetResponse = intentData?.responses[0];
