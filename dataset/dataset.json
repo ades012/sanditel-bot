@@ -132,6 +132,12 @@
         ]
       },
       {
+        "tag": "add_switch",
+        "patterns": [
+          "tambah switch detail ip id password"
+        ]
+      },
+      {
         "tag": "ping_host",
         "patterns": [
           "apakah "

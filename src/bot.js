@@ -132,9 +132,9 @@ function runTelegramBot() {
           break;
           case 'add_ssid':
             const ssidRegex = /^tambah ssid (.+) password (.+)/i;
-            const match = message.match(ssidRegex);
+            const ssidMatch = message.ssidMatch(ssidRegex);
           
-            if (match) {
+            if (ssidMatch) {
               const requestedSSID = match[1].trim();
               const requestedPassword = match[2].trim();
           
@@ -212,6 +212,38 @@ function runTelegramBot() {
                   bot.sendMessage(chatId, response);
               }
             });
+          break;
+          case 'add_switch':
+            const switchRegex = /^tambah switch (.+) detail (.+) ip (.+) id (.+) password(.+)/i;
+            const switchMatch = message.match(switchRegex);
+          
+            if (switchMatch) {
+              const requestedSwitch = switchMatch[1].trim();
+              const requestedDetail = switchMatch[2].trim();
+              const requestedIP = switchMatch[3].trim();
+              const requestedID = switchMatch[4].trim();
+              const requestedPasswordSwitch = switchMatch[5].trim();
+          
+              const insertQuery = `INSERT INTO switch (name, detail, ip, id, password) VALUES (?, ?, ?, ?, ?)`;
+              const values = [requestedSwitch, requestedDetail, requestedIP, requestedID, requestedPasswordSwitch];
+          
+              connection.query(insertQuery, values, (err, result) => {
+                if (err) {
+                  console.error('Error executing insert query:', err);
+                  bot.sendMessage(chatId, 'Oops! An error occurred while inserting data.');
+                  return;
+                }
+          
+                if (result.affectedRows > 0) {
+                  const response = `Data untuk Switch "${requestedSwitch}" telah ditambahkan ke database.`;
+                  bot.sendMessage(chatId, response);
+                } else {
+                  bot.sendMessage(chatId, 'Oops! Failed to insert data to the database.');
+                }
+              });
+            } else {
+              bot.sendMessage(chatId, 'Oops! Invalid format for adding SSID. Please use the format: "tambah ssid [SSID] password [password]".');
+            }
           break;
           case 'internet_issue':
             const intentData = dataset.intents.find((item) => item.tag === intent);
