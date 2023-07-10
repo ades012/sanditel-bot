@@ -53,7 +53,7 @@ function runTelegramBot() {
           
                 if (rows.length > 0) {
                   const options = rows.map((row, index) => `${index + 1}. ${row.ssid}`).join('\n');
-                  const response = `Apakah yang Anda maksud adalah:\n${options}\n \nNomor berapa yang Anda maksud?`;
+                  const response = `Terdapat beberapa SSID dengan kata kunci tersebut:\n${options}\n \nNomor berapa yang Anda maksud?`;
                   bot.sendMessage(chatId, response);
           
                   // Set the flag to track whether the user response has been handled
