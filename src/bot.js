@@ -6,6 +6,7 @@ const negativeResponses = require('../dataset/negativeResponse');
 const positiveResponses = require('../dataset/positiveResponse');
 const { dataset } = require('./nlp');
 const path = require('path');
+const stringSimilarity = require('string-similarity');
 // const id_tele = ['1111111','22222222','333333333'];
 function runTelegramBot() {
   const token = process.env.TELEGRAM_TOKEN;
@@ -36,32 +37,59 @@ function runTelegramBot() {
             bot.sendMessage(chatId, response);
           break;
           case 'get_password':
-          const passwordKeyword = 'password ';
-          const passwordIndex = message.toLowerCase().indexOf(passwordKeyword);
+            const passwordKeyword = 'password ';
+            const passwordIndex = message.toLowerCase().indexOf(passwordKeyword);
           
-          if (passwordIndex !== -1) {
-            const requestedSSID = message.substring(passwordIndex + passwordKeyword.length).trim();
-            const query = `SELECT ssid, password FROM wifi WHERE ssid LIKE "${requestedSSID}"`;
+            if (passwordIndex !== -1) {
+              const requestedSSID = message.substring(passwordIndex + passwordKeyword.length).trim();
+              const query = `SELECT ssid, password FROM wifi WHERE ssid LIKE "%${requestedSSID}%"`;
+          
+              connection.query(query, (err, rows) => {
+                if (err) {
+                  console.error('Error executing query:', err);
+                  bot.sendMessage(chatId, 'Oops! An error occurred while fetching data.');
+                  return;
+                }
+          
+                if (rows.length > 0) {
+                  const options = rows.map((row, index) => `${index + 1}. ${row.ssid}`).join('\n');
+                  const response = `Apakah yang Anda maksud adalah:\n${options}\n \n SSID WiFi nomor berapa yang anda maksud ?`;
+                  bot.sendMessage(chatId, response);
+                  bot.onText(/^[1-9][0-9]*$/, (msg, match) => {
+                    const selectedOption = parseInt(match[0]);
 
-            connection.query(query, (err, rows) => {
-              if (err) {
-                console.error('Error executing query:', err);
-                bot.sendMessage(chatId, 'Oops! An error occurred while fetching data.');
-                return;
-              }
+                    // Retrieve the corresponding password based on the selected option
+                    const requestedSSID = message.substring(passwordIndex + passwordKeyword.length).trim();
+                    const query = `SELECT ssid, password FROM wifi WHERE ssid LIKE "%${requestedSSID}%"`;
 
-              if (rows.length > 0) {
-                const result = rows[0];
-                const response = `Berikut password untuk SSID "${result.ssid}":\nSSID: ${result.ssid}\nPassword: ${result.password}`;
-                bot.sendMessage(chatId, response);
-              } else {
-                const response = `Maaf, data untuk SSID "${requestedSSID}" tidak ditemukan dalam database.`;
-                bot.sendMessage(chatId, response);
-              }
-            });
-          } else {
-            bot.sendMessage(chatId, 'Format pesan tidak valid. Mohon sertakan "password <SSID>".');
-          }
+                    connection.query(query, (err, rows) => {
+                      if (err) {
+                        console.error('Error executing query:', err);
+                        bot.sendMessage(chatId, 'Oops! An error occurred while fetching data.');
+                        return;
+                      }
+
+                      if (rows.length > 0 && selectedOption <= rows.length) {
+                        const result = rows[selectedOption - 1];
+                        const response = `SSID: ${result.ssid}\nPassword: ${result.password}`;
+                        bot.sendMessage(chatId, response);
+                      } else {
+                        bot.sendMessage(chatId, 'Invalid option selected. Please try again.');
+                      }
+                    });
+                  });
+                  // Wait for user response to select the option
+                  // Handle the user response and send the corresponding password
+                  // Example: If user response is "1" or "Sanditel Wifi - ADM KEU"
+                  // Retrieve the corresponding password and send it to the user
+                } else {
+                  const response = `Maaf, data untuk SSID "${requestedSSID}" tidak ditemukan dalam database.`;
+                  bot.sendMessage(chatId, response);
+                }
+              });
+            } else {
+              bot.sendMessage(chatId, 'Format pesan tidak valid. Mohon sertakan "password <SSID>".');
+            }
           break;
           case 'get_switch':
           const switchKeyword = 'switch ';

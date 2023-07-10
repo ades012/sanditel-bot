@@ -10,6 +10,7 @@
     "node-nlp": "^4.27.0",
     "node-telegram-bot-api": "^0.61.0",
     "path": "^0.12.7",
+    "string-similarity": "^4.0.4",
     "telnet-client": "^2.0.8"
   }
 }
