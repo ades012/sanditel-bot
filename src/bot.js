@@ -53,22 +53,32 @@ function runTelegramBot() {
           
                 if (rows.length > 0) {
                   const options = rows.map((row, index) => `${index + 1}. ${row.ssid}`).join('\n');
-                  const response = `Apakah yang Anda maksud adalah:\n${options}\n \n SSID WiFi nomor berapa yang anda maksud ?`;
+                  const response = `Apakah yang Anda maksud adalah:\n${options}\n \nNomor berapa yang Anda maksud?`;
                   bot.sendMessage(chatId, response);
-                  bot.onText(/^[1-9][0-9]*$/, (msg, match) => {
+          
+                  // Set the flag to track whether the user response has been handled
+                  let isUserResponseHandled = false;
+          
+                  // Define the callback function for handling the user response
+                  const handleUserResponse = (msg, match) => {
+                    if (isUserResponseHandled) {
+                      // Ignore subsequent responses to avoid multiple handling
+                      return;
+                    }
+          
                     const selectedOption = parseInt(match[0]);
-
+          
                     // Retrieve the corresponding password based on the selected option
                     const requestedSSID = message.substring(passwordIndex + passwordKeyword.length).trim();
                     const query = `SELECT ssid, password FROM wifi WHERE ssid LIKE "%${requestedSSID}%"`;
-
+          
                     connection.query(query, (err, rows) => {
                       if (err) {
                         console.error('Error executing query:', err);
                         bot.sendMessage(chatId, 'Oops! An error occurred while fetching data.');
                         return;
                       }
-
+          
                       if (rows.length > 0 && selectedOption <= rows.length) {
                         const result = rows[selectedOption - 1];
                         const response = `SSID: ${result.ssid}\nPassword: ${result.password}`;
@@ -76,12 +86,14 @@ function runTelegramBot() {
                       } else {
                         bot.sendMessage(chatId, 'Invalid option selected. Please try again.');
                       }
+          
+                      // Set the flag to indicate that the user response has been handled
+                      isUserResponseHandled = true;
                     });
-                  });
+                  };
+          
                   // Wait for user response to select the option
-                  // Handle the user response and send the corresponding password
-                  // Example: If user response is "1" or "Sanditel Wifi - ADM KEU"
-                  // Retrieve the corresponding password and send it to the user
+                  bot.onText(/^[1-9][0-9]*$/, handleUserResponse);
                 } else {
                   const response = `Maaf, data untuk SSID "${requestedSSID}" tidak ditemukan dalam database.`;
                   bot.sendMessage(chatId, response);
