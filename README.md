@@ -25,13 +25,13 @@ Untuk menjalankannya anda membutuhkan :
    - Isi tabel Switch : 
      - name, detail, ip, id, password
 7. buat sebuah file .env dan isi file dengan env yang dibutuhkan \
-   `DB_HOST=<host database>` \
-   `DB_PORT=<port database>` \
-   `DB_USER=<user database>` \
-   `DB_PASSWORD=<password database>` \
-   `DB_NAME=<nama database>` \
-   `TELEGRAM_TOKEN=<'token telegram'>` \
-   `TELEGRAM_GROUP=<'id grup telegram'>`
+   `DB_HOST='host database'` \
+   `DB_PORT='port database'` \
+   `DB_USER='user database'` \
+   `DB_PASSWORD='password database'` \
+   `DB_NAME='nama database'` \
+   `TELEGRAM_TOKEN='token telegram'` \
+   `TELEGRAM_GROUP='id grup telegram'`
 8. Untuk Operasi CRUD untuk WiFi dan Switch silahkan operasikan sesuka hati, anda bisa menyesuaikan konfigurasi pada database maupun pada kode javascriptnya sesuai yang anda butuhkan.
 
 9. jalankan `node index.js`
